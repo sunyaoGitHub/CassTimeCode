@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="GB2312" ?>
+
+<VendorConvert import_check="1" oe_warning="1" price_warning="0" repeat_warning="0" import_check="1" trim_space="1" echo_time="1" scheme="../Vehicle.e">
+	<BaseData file="../BaseData.e"/>
+	<Vendor name="华砺" run="1" type="1" mode="2"/>
+	<Vendor name="中心库" run="0" type="1" mode="1"/>
+	<Vendor name="宝狮" run="1" type="1" mode="2"/>
+	<Vendor name="欣睿豪" run="1" type="1" mode="2"/>
+	<Vendor name="存德" run="1" type="1" mode="2"/>
+	<Vendor name="众奥" run="1" type="1" mode="2"/>
+	<Vendor name="云仓储" run="0" type="1" mode="1"/>
+	<Vendor name="裕丰" run="1" type="1" mode="2"/>
+	<Vendor name="鸿盛益" run="1" type="1" mode="2"/>
+	<ResultData write="1" file="../../bin/VendorData.e"/>
+	<DataDelta run="1" base="../../../../../../CassTime/mdm/VendorData.e" delta="../../bin/VendorDataDelta.e"/>
+</VendorConvert>

@@ -1,0 +1,31 @@
+﻿生成启动时间为 2016/3/28 16:23:42。
+     1>项目“F:\CassTime\oasis3.19\oasis\src\OEUnify\OEUnify.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“Release\OEUnify.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         D:\VS2010\VC\bin\CL.exe /c /I../../../bsl/include /I../../../3rdparty /I../../include /Zi /nologo /W4 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy- /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Release\OEUnify.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /wd4251 /wd4481 /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         Automatically linking with TextSnippet.dll
+         Automatically linking with RapidE.dll
+         Automatically linking with FileSnippet.dll
+         Automatically linking with DDE.dll
+         D:\VS2010\VC\bin\CL.exe /c /I../../../bsl/include /I../../../3rdparty /I../../include /Zi /nologo /W4 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy- /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Release\OEUnify.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /wd4251 /wd4481 /analyze- /errorReport:prompt OEUnify.cpp main.cpp
+         OEUnify.cpp
+         main.cpp
+       Link:
+         D:\VS2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"../../bin/OEUnify.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:../../lib /LIBPATH:../../../bsl/lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\OEUnify.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:\CassTime\oasis3.19\oasis\bin\OEUnify.pdb" /SUBSYSTEM:CONSOLE /STACK:"4194304" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"../../bin/OEUnify.lib" /MACHINE:X86 Release\OEUnify.obj
+         Release\main.obj
+         Release\stdafx.obj
+         正在生成代码
+         已完成代码的生成
+         OEUnify.vcxproj -> F:\CassTime\oasis3.19\oasis\src\OEUnify\../../bin/OEUnify.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"../../bin/OEUnify.exe;#1" /manifest Release\OEUnify.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         正在删除文件“Release\OEUnify.unsuccessfulbuild”。
+         正在对“Release\OEUnify.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“F:\CassTime\oasis3.19\oasis\src\OEUnify\OEUnify.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.80
