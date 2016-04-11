@@ -1,39 +1,5 @@
-﻿生成启动时间为 2016/3/28 16:19:10。
-     1>项目“F:\CassTime\oasis3.19\oasis\src\OEUnify\OEUnify.vcxproj”在节点 2 上(build 个目标)。
-     1>InitializeBuildStatus:
-         正在创建“Debug\OEUnify.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
-       ClCompile:
-         D:\VS2010\VC\bin\CL.exe /c /I../../../bsl/include /I../../../3rdparty /I../../include /ZI /nologo /W4 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Debug\OEUnifyd.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /wd4251 /wd4481 /analyze- /errorReport:prompt stdafx.cpp
-         stdafx.cpp
-         Automatically linking with TextSnippetd.dll
-         Automatically linking with RapidEd.dll
-         Automatically linking with FileSnippetd.dll
-         Automatically linking with DDEd.dll
-         D:\VS2010\VC\bin\CL.exe /c /I../../../bsl/include /I../../../3rdparty /I../../include /ZI /nologo /W4 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\OEUnifyd.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /wd4251 /wd4481 /analyze- /errorReport:prompt OEUnify.cpp main.cpp
-         main.cpp
-         OEUnify.cpp
-         正在生成代码...
-       ManifestResourceCompile:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\OEUnifyd.exe.embed.manifest.res" Debug\OEUnifyd_manifest.rc 
-       Link:
-         D:\VS2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"../../bin/OEUnifyd.exe" /INCREMENTAL /NOLOGO /LIBPATH:../../lib /LIBPATH:../../../bsl/lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\OEUnifyd.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:\CassTime\oasis3.19\oasis\bin\OEUnifyd.pdb" /SUBSYSTEM:CONSOLE /STACK:"4194304" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"../../bin/OEUnifyd.lib" /MACHINE:X86 Debug\OEUnifyd.exe.embed.manifest.res
-         Debug\OEUnify.obj
-         Debug\main.obj
-         Debug\stdafx.obj
-       Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\OEUnifyd.exe.embed.manifest" /manifest Debug\OEUnifyd.exe.intermediate.manifest
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\OEUnifyd.exe.embed.manifest.res" Debug\OEUnifyd_manifest.rc 
-       LinkEmbedManifest:
-         D:\VS2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"../../bin/OEUnifyd.exe" /INCREMENTAL /NOLOGO /LIBPATH:../../lib /LIBPATH:../../../bsl/lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\OEUnifyd.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:\CassTime\oasis3.19\oasis\bin\OEUnifyd.pdb" /SUBSYSTEM:CONSOLE /STACK:"4194304" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"../../bin/OEUnifyd.lib" /MACHINE:X86 Debug\OEUnifyd.exe.embed.manifest.res
-         Debug\OEUnify.obj
-         Debug\main.obj
-         Debug\stdafx.obj
-         OEUnify.vcxproj -> F:\CassTime\oasis3.19\oasis\src\OEUnify\../../bin/OEUnifyd.exe
-       FinalizeBuildStatus:
-         正在删除文件“Debug\OEUnify.unsuccessfulbuild”。
-         正在对“Debug\OEUnify.lastbuildstate”执行 Touch 任务。
-     1>已完成生成项目“F:\CassTime\oasis3.19\oasis\src\OEUnify\OEUnify.vcxproj”(build 个目标)的操作。
+﻿生成启动时间为 2016/4/11 14:09:08。
 
 生成成功。
 
-已用时间 00:00:02.13
+已用时间 00:00:00.00

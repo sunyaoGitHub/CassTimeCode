@@ -10,6 +10,11 @@
 #pragma once
 #endif
 
+#ifdef _MSC_VER
+#pragma warning(push)
+#pragma warning(disable:4251)   // needs to have dll-interface to be used
+#endif
+
 #include "TextSnippet/TextSnippetLib.h"
 using namespace dsa::snippets::textsnippet;
 
@@ -37,6 +42,10 @@ using namespace std;
 #include <Windows.h>
 #include <direct.h>
 #include <io.h> //use _findfirst() and findnext() function
+#endif
+
+#ifdef _MSC_VER
+#pragma warning(pop)
 #endif
 
 #endif	// __STDAFX_H__

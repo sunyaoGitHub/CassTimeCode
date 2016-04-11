@@ -157,8 +157,8 @@ bool OEUnify::read_base() //读基础数据
 
 	if (!get_absolute_path(file_name, attribute->value(), conf_dir))//获取BaseData.e绝对路径
 	{
-		printf("配置文件“%s”OEUnify.BaseData.file内容“%s”错误，异常退出！\n", conf_file, attribute->value());
-		return false;
+		//printf("配置文件“%s”OEUnify.BaseData.file内容“%s”错误，异常退出！\n", conf_file, attribute->value());
+		//return false;
 	}
 
 	e_document_ex doc;

@@ -22,7 +22,7 @@ using namespace rapidxml;
 #include "STLHelper/const_char_map.hpp"
 using namespace dsa::stlhelper;
 
-#define OTL_ODBC
+#define OTL_ODBC                        //使用ODBC方式
 #define OTL_ODBC_SELECT_STM_EXECUTE_BEFORE_DESCRIBE
 #define OTL_BIGINT int64_t
 #define OTL_UBIGINT	uint64_t

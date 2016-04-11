@@ -99,10 +99,10 @@ bool E2DB::run(const char *_data_file, const char *_conf_file)
 	if (!attribute)
 		return false;
 
-	otl_connect::otl_initialize();
+	otl_connect::otl_initialize(); //初始化OTL 数据库连接环境
 	try
 	{
-		m_otl_connect.rlogon(attribute->value());
+		m_otl_connect.rlogon(attribute->value());//建立数据库连接
 	}
 	catch(otl_exception& p)
 	{
@@ -114,7 +114,7 @@ bool E2DB::run(const char *_data_file, const char *_conf_file)
 		return false;
 	}
 
-	if (!m_otl_connect.connected)
+	if (!m_otl_connect.connected)//连接成功
 		return false;
 
 	//char level_code[20];
@@ -145,7 +145,7 @@ bool E2DB::run(const char *_data_file, const char *_conf_file)
 	//}
 
 	data_file = _data_file;
-	if (!read_data())
+	if (!read_data()) //读取数据文件
 	{
 		printf("数据读取失败！\n");
 		return false;
@@ -205,10 +205,10 @@ bool E2DB::read_data()
 
 bool E2DB::write_db()
 {
-	for (size_t i = 0; i < db.m_tables.size(); ++i)
+	for (size_t i = 0; i < db.m_tables.size(); ++i)  //每一个表分别入库
 	{
 		DDETable *table = db.m_tables[i];
-		if (table_exist(table))
+		if (table_exist(table))//判断表是否存在
 			insert_table(table);
 		else
 			printf("%s no existed!\n", table->m_name.c_str());
@@ -364,9 +364,9 @@ bool E2DB::insert_table(const DDETable *table)
 		otl_nocommit_stream os(3000, sql.c_str(), m_otl_connect);
 		//os.set_flush(false);
 		//os.set_commit(0);
-		for(size_t i = 0; i < table->size(); ++i)
+		for(size_t i = 0; i < table->size(); ++i)  //每一行，数据有多列，每一行对应列分别写入
 		{
-			char* record = const_cast<char*>(table->at(i));
+			char* record = const_cast<char*>(table->at(i));  
 			for(size_t j = 0; j < scheme->columns().size(); ++j)
 			{
 				DDEColumnScheme *column = (scheme->columns())[j];

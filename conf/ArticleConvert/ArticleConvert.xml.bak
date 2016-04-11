@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="GB2312" ?>
+
+<ArticleConvert import_check="1" echo_time="1" scheme="../Vehicle.e">
+	<BaseData file="../BaseData.e"/>
+	<ModelMap file="../BMW Map.e"/>
+	<CatalogMap run="0" file="../目录对应.e"/>
+	<OEName run="0" file="../OEName.e"/>
+	<ResultData run="1" file="../../bin/ArticleData.e"/>
+</ArticleConvert>

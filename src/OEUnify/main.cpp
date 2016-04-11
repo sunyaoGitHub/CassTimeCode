@@ -6,15 +6,16 @@
 
 int main(int argc, char *argv[])
 {
+	char conf[1024];
+	char dir[1024];
+	char filename[1024];
 	if (argc == 1 || argc > 3)//参数为1个或者2个，参数1：数据文件.E格式  参数2：配置文件
 	{
 		printf("usage: %s \"OE Data Path\" [\"Configure.xml\"]\n", argv[0]);
 		return 1;
 	}
 
-	char conf[1024];
-	char dir[1024];
-	char filename[1024];
+
 	if (argc == 3)
 	{
 		full_path(conf, argv[2], 1024);//获取配置文件全路径
