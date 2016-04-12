@@ -192,12 +192,16 @@ bool OEFind::read_basedata()
 		exist_flag = true;
 		sprintf(filename,"%s/conf2",conf_dir);
 		sprintf(confname,"%s/BaseData.e",conf_dir);
-		QFile conf2(filename);  
+
+		QString filename_CN = filename_CN.fromLocal8Bit(filename);//中文路径无法识别
+		QString confname_CN = confname_CN.fromLocal8Bit(confname);
+
+		QFile conf2(filename_CN);  
 		if(!conf2.open(QIODevice::ReadOnly)) 
 			return false;
 		QByteArray BaseData_Array =QByteArray::fromBase64(conf2.readAll());  
 
-		QFile BaseData(confname);  
+		QFile BaseData(confname_CN);  
 		if(!BaseData.open(QIODevice::WriteOnly))   
 			return false;
 		BaseData.write(BaseData_Array); 
@@ -215,7 +219,10 @@ bool OEFind::read_basedata()
 	E2DDE efile_BaseData(db_read.scheme());
 	efile_BaseData.parse(db_read, doc, e_dde_parse_combine);
 	if(exist_flag)
-		QFile::remove(filename);
+	{
+		QString filename_CN = filename_CN.fromLocal8Bit(filename);
+		QFile::remove(filename_CN);
+	}
 
 	DDETable *Brand_tb = db_read.get("Brand");
 	if(!Brand_tb)
@@ -239,12 +246,16 @@ bool OEFind::read_oedata()
 		exist_flag = true;
 		sprintf(filename,"%s/conf3",conf_dir);
 		sprintf(confname,"%s/OEData.e",conf_dir);
-		QFile conf3(filename);  
+
+		QString filename_CN = filename_CN.fromLocal8Bit(filename);//中文路径无法识别
+		QString confname_CN = confname_CN.fromLocal8Bit(confname);
+
+		QFile conf3(filename_CN);  
 		if(!conf3.open(QIODevice::ReadOnly)) 
 			return false;
 		QByteArray OEData_Array =QByteArray::fromBase64(conf3.readAll());  
 
-		QFile OEData(confname);  
+		QFile OEData(confname_CN);  
 		if(!OEData.open(QIODevice::WriteOnly))  
 			return false;
 		OEData.write(OEData_Array); 
@@ -259,7 +270,10 @@ bool OEFind::read_oedata()
 	E2DDE efile_BaseData(db_read.scheme());
 	efile_BaseData.parse(db_read, doc, e_dde_parse_combine);
 	if(exist_flag)
-		QFile::remove(filename);
+	{
+		QString filename_CN = filename_CN.fromLocal8Bit(filename);
+		QFile::remove(filename_CN);
+	}
 
 	DDETable *OEData_tb = db_read.get("OEData");
 	if (!OEData_tb)
@@ -297,13 +311,17 @@ bool OEFind::parse_database()
 		exist_flag=true;
 		sprintf(filename,"%s/conf1",conf_dir);
 		sprintf(confname,"%s/Vehicle.e",conf_dir);
-		QFile conf1(filename);  
+
+		QString filename_CN = filename_CN.fromLocal8Bit(filename);
+		QString confname_CN= confname_CN.fromLocal8Bit(confname);
+
+		QFile conf1(filename_CN);  
 		if(!conf1.open(QIODevice::ReadOnly)) 
 			return false;
 		QByteArray Vehicle_Array =QByteArray::fromBase64(conf1.readAll());  
 
 
-		QFile Vehicle(confname);  
+		QFile Vehicle(confname_CN);  
 		if(!Vehicle.open(QIODevice::WriteOnly)) 
 			return false;
 		Vehicle.write(Vehicle_Array); 
@@ -323,7 +341,10 @@ bool OEFind::parse_database()
 	db_read.scheme(&scheme);
 	db_read.m_name = "read";
 	if(exist_flag)
-		QFile::remove(filename);
+	{
+		QString filename_CN = filename_CN.fromLocal8Bit(filename);
+		QFile::remove(filename_CN);
+	}
 
 	if(!read_basedata())
 		return false;
