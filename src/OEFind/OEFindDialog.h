@@ -22,6 +22,7 @@ public:
 	bool parse_conf_file();
 	void init_brand_choice_combobox();
 
+
 private slots:
 	void oe_find_slots();
 	void oe_find_edit_slots();
@@ -35,7 +36,7 @@ private:
 	QCheckBox *match_checkbox;
 	QCheckBox *all_brand_checkbox;
 	QTableWidget *find_result_tablewidget;
-	QMessageBox OE_not_found;
+	//QMessageBox OE_not_found;
 	QMessageBox OE_conf_not_found;
 	QMessageBox OE_conf_parse_failed;
 	QMessageBox OE_conf_parse_status;

@@ -26,10 +26,13 @@ OEFindDialog::OEFindDialog(QWidget *parent)
 
 	brand_choice_combobox = new QComboBox();
 
+
+
+
 	match_checkbox = new QCheckBox(QStringLiteral("完全匹配"));
 	match_checkbox->setCheckState(Qt::Unchecked);
 
-	all_brand_checkbox=new QCheckBox(QStringLiteral("全部车型"));
+	all_brand_checkbox=new QCheckBox(QStringLiteral("全部品牌"));
 	all_brand_checkbox->setCheckState(Qt::Unchecked);
 	connect(all_brand_checkbox,SIGNAL(stateChanged(int)),this,SLOT(oe_find_all_brand_slots()));
 
@@ -72,9 +75,9 @@ OEFindDialog::OEFindDialog(QWidget *parent)
 	OE_conf_not_found.setIcon(QMessageBox::Critical);
 
 
-	OE_not_found.setWindowTitle(QStringLiteral("查找结果"));
+	/*OE_not_found.setWindowTitle(QStringLiteral("查找结果"));
 	OE_not_found.setIcon(QMessageBox::Warning);
-	OE_not_found.setText(QStringLiteral("对不起，找不到该OE号，请核对后再查！"));
+	OE_not_found.setText(QStringLiteral("对不起，找不到该OE号，请核对后再查！"));*/
 
 	OE_conf_parse_failed.setWindowTitle(QStringLiteral("错误"));
 	OE_conf_parse_failed.setIcon(QMessageBox::Critical);
@@ -92,12 +95,16 @@ OEFindDialog::~OEFindDialog()
 void OEFindDialog::oe_find_slots()
 {
 	QString find_edit_input = oe_find_edit->text();
-	int brand_choice = brand_choice_combobox->currentIndex();
+	QString brand_choice_Qstring = brand_choice_combobox->currentText();
 	bool all_brand = all_brand_checkbox->checkState();
 	bool oe_march = match_checkbox->checkState();
 
-	QByteArray ba = find_edit_input.toLatin1(); //转换成 char *
-	char *find_edit_string = ba.data();
+	QByteArray find_edit_ba = find_edit_input.toLatin1(); //转换成 char *
+	char *find_edit_string = find_edit_ba.data();
+
+	QByteArray brand_choice_ba = brand_choice_Qstring.toLocal8Bit(); //转换成 char *
+	char *brand_choice =brand_choice_ba.data();
+
 	trim_space(find_edit_string);
 	strupr(find_edit_string);//转换成大写
 
@@ -131,7 +138,10 @@ void OEFindDialog::oe_find_slots()
 	}
 	else
 	{
-		if(OE_not_found.exec()== QMessageBox::Ok)
+		QString Not_found =Not_found.fromLocal8Bit("对不起，找不到该OE号......");
+		QTableWidgetItem *Not_found_oe = new QTableWidgetItem(Not_found);
+		find_result_tablewidget->setItem(0,0,Not_found_oe);
+		//	if(OE_not_found.exec()== QMessageBox::Ok)
 		{
 			oe_find_edit->setFocus();
 			oe_find_edit->selectAll();
@@ -144,7 +154,10 @@ void OEFindDialog::oe_find_edit_slots()
 	if(!oe_find_edit_text.isEmpty())
 		oe_find_button->setEnabled(true);
 	else
+	{
 		oe_find_button->setEnabled(false);
+		find_result_tablewidget->clearContents(); //刷新显示
+	}
 }
 void OEFindDialog::oe_find_all_brand_slots()
 {
@@ -155,37 +168,13 @@ void OEFindDialog::oe_find_all_brand_slots()
 }
 bool OEFindDialog::init_conf_file()
 {
-	bool Message_error=false;
-
-	if	(!OE_find.get_conf_dir()) //找不到初始化文件
+	if	(!OE_find.get_conf_dir()) 
 	{
-		OE_conf_not_found.setText(QStringLiteral("初始化文件OEFind.ini解析失败,请确认！"));
+		OE_conf_not_found.setText(QStringLiteral("初始化目录失败,请确认！"));
 		OE_conf_not_found.exec();
-		Message_error=true;
-	}
-/*	if	(!OE_find.check_config_Vehicle())//找不到Vehicle文件
-	{
-		OE_conf_not_found.setText(QStringLiteral("找不到配置文件：conf1，请确认！"));
-		OE_conf_not_found.exec();
-		Message_error=true;
-	}
-	if	(!OE_find.check_config_OEData())//找不到OEData文件
-	{
-		OE_conf_not_found.setText(QStringLiteral("找不到配置文件：conf2，请确认！"));
-		OE_conf_not_found.exec();
-		Message_error=true;
-	}
-	if	(!OE_find.check_config_BaseData())//找不到BaseData文件
-	{
-		OE_conf_not_found.setText(QStringLiteral("找不到配置文件：conf3，请确认！"));
-		OE_conf_not_found.exec();
-		Message_error=true;
-	}*/
-	
-	if(Message_error)
 		return false;
-	else
-		return true;
+	}
+	return true;
 }
 bool OEFindDialog::parse_conf_file()
 {	
@@ -194,13 +183,6 @@ bool OEFindDialog::parse_conf_file()
 	OE_conf_parse_status.show();
 
 	QCoreApplication::processEvents();//刷新显示
-
-/*	if(!OE_find.file_encryption())  //配置文件加密
-	{
-		OE_conf_not_found.setText(QStringLiteral("配置文件错误,请确认！"));
-		OE_conf_not_found.exec();
-		return false;
-	}*/
 	
 	if(!OE_find.parse_database())  
 	{
@@ -210,14 +192,27 @@ bool OEFindDialog::parse_conf_file()
 	OE_conf_parse_status.close();
 	return true;
 }
+class qstring_size_compare
+{
+public:
+	bool operator()(const QString &string1,const QString &string2) const
+	{
+		return string1.size()<string2.size();
+	}
+};
+
 void OEFindDialog::init_brand_choice_combobox()
 {
-	DDETable *Brand_tb = OE_find.db_read.get("Brand");
-
-	for(size_t i=0;i<Brand_tb->size();i++)
+	vector <QString> brand_name_vector;
+	for(auto it = OE_find.brand_oedata_map.begin();it != OE_find.brand_oedata_map.end();++it)
 	{
-		Brand *data = reinterpret_cast<Brand*>(Brand_tb->at(i));
-		QString brand_string=brand_string.fromLocal8Bit(data->brand_name_cn);
-		brand_choice_combobox->addItem(brand_string);
+		const char *brand_name_CN=it->first;
+		QString brand_name=brand_name.fromLocal8Bit(brand_name_CN);
+		brand_name_vector.push_back(brand_name);
+	}
+	sort(brand_name_vector.begin(),brand_name_vector.end(),qstring_size_compare());
+	for (auto it=brand_name_vector.begin(); it!= brand_name_vector.end();++it)
+	{
+		brand_choice_combobox->addItem(*it);
 	}
 }
